@@ -70,7 +70,7 @@ class LitLLM(L.LightningModule):
     def configure_optimizers(self):
         warmup_steps = 10
         optimizer = torch.optim.AdamW(
-            self.llm.model.parameters(), lr=0.0002, weight_decay=0.0, betas=(0.9, 0.95)
+            self.llm.model.parameters(), lr=0.0002, weight_decay=0.0, betas=(0.9, 0.95) #TODO make it configurable
         )
         scheduler = torch.optim.lr_scheduler.LambdaLR(
             optimizer, lambda step: step / warmup_steps
@@ -110,7 +110,7 @@ def main(cfg: DictConfig):
 
     data.connect(max_seq_length=cfg.model.block_size)
 
-    logger = WandbLogger(project="sos", name=f"{cfg.model.name}", config=wandb_config)
+    logger = WandbLogger(project=cfg.general.project, name=f"{cfg.model.name}", config=wandb_config)
 
     # eval_callback = EvalCallback(
     #     data_dir=cfg.data.datapath,

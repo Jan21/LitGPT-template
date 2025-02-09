@@ -8,6 +8,9 @@ hydra:
   run:  
     dir: .
 
+general:
+  project: "SAT"
+
 tok_data:
   train_file: "../data/sos/train1_b4_t30_n200000_dfs.json"
   val_target_file: "../data/sos/val_target1_b4_t30_n200000_dfs.json"

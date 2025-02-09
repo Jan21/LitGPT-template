@@ -22,11 +22,6 @@ def get_tokenizer(vocab, cfg):
     tokenizer.add_special_tokens(['[BOS]', '[PAD]','[MASK]','[UNK]', '[EOS]'])
     tokenizer.save(cfg.data.datapath + "/" + cfg.data.specific_datapath + "tokenizer.json")
     print("tokenizer saved to:", cfg.data.specific_datapath + "tokenizer.json")
-    # tokenizer = PreTrainedTokenizerFast(tokenizer_file=f"data/tokenizer.json")
-    # tokenizer.eos_token = "[SEP]"
-    # tokenizer.unk_token = "[UNK]"   
-    # tokenizer.pad_token = "[PAD]"
-    # tokenizer.mask_token = "[MASK]"
     return tokenizer
 
 def get_vocab(cfg: DictConfig):
